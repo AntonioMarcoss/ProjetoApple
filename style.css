@@ -8,7 +8,7 @@ body{
     justify-content: center;
     align-items: center;
     padding: 1px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(15, 15, 15, 0.8);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -30,7 +30,7 @@ body{
 }
 
 .nav-links li{
-    margin: 0 20px;
+    margin: 0 22px;
 }
 
 .nav-links a{
@@ -49,15 +49,21 @@ body{
     text-decoration: none;
 }
 
+.arrow::after {
+    content: "➔";
+    display: inline-block;
+    margin-right: 5px;
+}
+
 .nav-icons{
     display: flex;
     align-items: center;
 }
 
 .search-icon, .shop-icon{
-    font-size: 15px;
+    font-size: 13px;
     color: rgb(255, 255, 255);
-    margin-left: 15px;
+    margin-left: 37px;
     text-decoration: none;
 }
 
@@ -162,6 +168,12 @@ body{
         padding: 10px 20px;
         font-size: 15px;
         text-decoration: none;
+    }
+
+    .arrow::after {
+        content: "➔";
+        display: inline-block;
+        margin-right: 5px;
     }
 
     .iphone-image{
