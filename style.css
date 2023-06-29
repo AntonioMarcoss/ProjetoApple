@@ -1,9 +1,9 @@
-body{
+body {
     font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     margin: 0;
 }
 
-.navbar{
+.navbar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +12,7 @@ body{
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.logo{
+.logo {
     display: flex;
     align-items: center;
     font-size: 24px;
@@ -22,18 +22,18 @@ body{
     padding-right: 20px;
 }
 
-.nav-links{
+.nav-links {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.nav-links li{
+.nav-links li {
     margin: 0 22px;
 }
 
-.nav-links a{
+.nav-links a {
     font-size: 12px;
     font-weight: 400;
     color: rgb(255, 255, 255);
@@ -42,40 +42,88 @@ body{
     transition: all 0.2s ease-in-out;
 }
 
-.botao{
-    color: #198cf8;
-    padding: 10px 20px;
+.call-to-actions {
+    padding-top: 20px;
+}
+
+.arrow_botao {
+    color: #1714dd;
+    padding: 0px 20px;
     font-size: 20px;
     text-decoration: none;
+    position: relative;
+    display: inline;
+    padding-right: 3px;
+    padding-left: 6px;
+    margin-right: 30px;
 }
 
-.arrow::after {
+.arrow_botao::after {
     content: "➔";
     display: inline-block;
-    margin-right: 5px;
+    margin-left: 5px;
+
 }
 
-.nav-icons{
+.arrow_botao:hover {
+    opacity: 1;
+    border-bottom: 2px solid #1714dd;
+    width: 60%;
+}
+
+.arrow_botao1 {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    min-width: 28px;
+    padding: 8px 16px;
+    border-radius: 980px;
+    background: #0071e3;
+    color: #fff;
+    margin-right: 15px;
+    text-decoration: none;
+
+}
+
+.arrow_botao1::after {
+    content: "➔";
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.arrow_botao1:hover {
+    background-color: #0071e3c7;
+    cursor: pointer;
+    color: aliceblue;
+    transform: translateY(-5px)
+}
+
+.nav-icons {
     display: flex;
     align-items: center;
 }
 
-.search-icon, .shop-icon{
+.search-icon,
+.shop-icon {
     font-size: 13px;
     color: rgb(255, 255, 255);
     margin-left: 37px;
     text-decoration: none;
 }
 
-.search-icon i{
+.search-icon i {
     display: block;
 }
 
-.shop-icon i{
+.shop-icon i {
     position: relative;
 }
 
-.hero{
+.hero {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -83,53 +131,55 @@ body{
     text-align: center;
 }
 
-.hero h1{
+.hero h1 {
     font-size: 50px;
     font-weight: 600;
     margin-bottom: -15px;
 }
-.hero h2{
+
+.hero h2 {
     font-size: 28px;
     font-weight: 300;
     margin-bottom: 20px;
 }
 
-.iphone-image{
+.iphone-image {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    padding-top: 20px;
 }
 
-.iphone-image2{
+.iphone-image2 {
     display: flex;
     justify-content: center;
     margin-top: 50px;
 }
 
-.iphone-image3{
+.iphone-image3 {
     display: none;
+
 
 }
 
 
 /*RODAPE*/
-.rodape{
+.rodape {
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     height: 630px;
-    margin-top:30px;
+    margin-top: 30px;
 }
 
-.rodape h1{
+.rodape h1 {
     font-size: 56px;
     font-weight: 600;
     color: white;
 }
 
-.rodape h2{
+.rodape h2 {
     font-size: 28px;
     font-weight: 300;
     color: rgb(255, 255, 255);
@@ -138,12 +188,12 @@ body{
 
 /*Estilo responsivo*/
 
-@media only screen and (max-width: 767px){
-    .nav-links{
+@media only screen and (max-width: 767px) {
+    .nav-links {
         display: none;
     }
 
-    .nav-icons{
+    .nav-icons {
         margin-left: 230px;
     }
 
@@ -151,19 +201,19 @@ body{
         margin-left: 30px;
     }
 
-    .hero h1{
+    .hero h1 {
         font-size: 40px;
         font-weight: 600;
         margin-bottom: 0;
     }
 
-    .hero h2{
+    .hero h2 {
         font-size: 20px;
         font-weight: 300;
         margin-bottom: 20px;
     }
 
-    .botao{
+    .botao {
         color: #198cf8;
         padding: 10px 20px;
         font-size: 15px;
@@ -176,41 +226,41 @@ body{
         margin-right: 5px;
     }
 
-    .iphone-image{
+    .iphone-image {
         display: flex;
         height: 160px;
         justify-content: center;
         margin-top: 50px;
     }
 
-    .rodape{
+    .rodape {
         background-color: black;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         height: 370px;
-        margin-top:90px;
+        margin-top: 90px;
     }
 
-    .rodape h1{
+    .rodape h1 {
         font-size: 30px;
         font-weight: 600;
         color: white;
     }
 
-    .rodape h2{
+    .rodape h2 {
         font-size: 18px;
         font-weight: 300;
         color: white;
         margin-top: -10px;
     }
 
-    .iphone-image2{
+    .iphone-image2 {
         display: none;
     }
 
-    .iphone-image3{
+    .iphone-image3 {
         display: flex;
         height: 200px;
         justify-content: center;
@@ -218,4 +268,189 @@ body{
     }
 
 
+}
+
+#menu {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    width: 100%;
+    height: 110px;
+    padding-top: 30px;
+}
+
+#addPostButton {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    min-width: 28px;
+    padding: 8px 16px;
+    border-radius: 980px;
+    background: #0071e3;
+    color: #fff;
+    margin-right: 15px;
+}
+
+#addPostButton:hover {
+    background-color: #0071e3c7;
+    cursor: pointer;
+    color: aliceblue;
+    transform: translateY(-5px);
+}
+
+#searchInput {
+    border: 2px black solid;
+    background-color: rgba(110, 106, 106, 0.8);
+    color: black;
+    font-size: 17px;
+    font-weight: 400;
+    padding: 8px 16px;
+    border-radius: 980px;
+
+}
+
+input[type="text"]::placeholder {
+    color: #2b2929;
+}
+
+.title_post {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 10px;
+}
+
+#addPostModal {
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#box_text {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+#savePostButton {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    min-width: 28px;
+    padding: 8px 16px;
+    border-radius: 980px;
+    background: #0071e3;
+    color: #fff;
+    margin-right: 15px;
+}
+
+#savePostButton:hover {
+    background-color: #0071e3c7;
+    cursor: pointer;
+    color: rgb(243, 243, 243);
+    transform: translateY(-5px);
+}
+
+#editPostModal {
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#updatePostButton {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: -0.022em;
+    min-width: 28px;
+    padding: 8px 16px;
+    border-radius: 980px;
+    background: #0de931;
+    color: #030303;
+    margin-right: 15px;
+}
+
+#updatePostButton:hover {
+    background-color: #0de932b4;
+    cursor: pointer;
+    color: #030303;
+    transform: translateY(-5px);
+}
+
+.post {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: auto;
+    padding-bottom: 30px;
+    padding-right: 128px;
+}
+
+#deleteButton-0 {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: -0.022em;
+    min-width: 28px;
+    padding: 8px 16px;
+    border-radius: 980px;
+    background-color: #800404;
+    color: #ffffff;
+}
+
+#deleteButton-0:hover {
+    background-color: #80040483;
+    cursor: pointer;
+    color: white;
+    transform: translateY(-5px);
+}
+
+#editButton-0 {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: -0.022em;
+    min-width: 28px;
+    padding: 8px 16px;
+    border-radius: 980px;
+    background-color: #060afc;
+    color: #ffffff;
+}
+
+#editButton-0:hover {
+    background-color: #1e21ee86;
+    cursor: pointer;
+    color: white;
+    transform: translateY(-5px);
 }
