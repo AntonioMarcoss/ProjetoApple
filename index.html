@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="icon" href="icone.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <link href ="https://antoniomarcoss.github.io/ProjetoApple/style.css" rel ="stylesheet"/>
+    <link href="https://antoniomarcoss.github.io/ProjetoApple/style.css" rel="stylesheet" />
     <title>Apple (Brasil)</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar">
             <a href="#" class="logo">
-            <img src="https://www.apple.com/ac/globalnav/5/en_US/images/globalnav/apple/image_large.svg" alt="Apple Logo" class="logo-img">
+                <img src="https://www.apple.com/ac/globalnav/5/en_US/images/globalnav/apple/image_large.svg"
+                    alt="Apple Logo" class="logo-img">
             </a>
             <ul class="nav-links">
                 <li><a href="#">Loja</a></li>
@@ -41,8 +44,8 @@
             <h1>iPhone 14</h1>
             <h2>Em dois tamanhos perfeitos. <br>Agora com um toque de amarelo.</h2>
             <div class="call-to-actions">
-                <a href="#" class="arrow botao">Saiba mais</a>
-                <a href="#" class="arrow botao">Comprar</a>
+                <a href="#" class="arrow_botao"><span>Saiba mais</span></a>
+                <a href="#" class="arrow_botao1">Comprar</a>
             </div>
         </div>
 
@@ -51,26 +54,225 @@
         </div>
     </section>
 
-        <div class="rodape">
-            <h1>iPhone 14 Pro</h1>
-            <h2>Pro. E além</h2>
-            <div class="call-to-actions">
-                <a href="#" class="arrow botao">Saiba mais</a>
-                <a href="#" class="arrow botao">Comprar</a>
+    <div class="rodape">
+        <h1>iPhone 14 Pro</h1>
+        <h2>Pro. E além</h2>
+        <div class="call-to-actions">
+            <a href="#" class="arrow_botao">Saiba mais</a>
+            <a href="#" class="arrow_botao1">Comprar</a>
 
-                <div class="iphone-image2">
-                    <img src="iphone_rodape.png" alt="iPhone Image">
-                </div>
-
-                <div class="iphone-image3">
-                    <img src="mobile.png" alt="iPhone Image">
-                </div>
-
+            <div class="iphone-image2">
+                <img src="iphone_rodape.png" alt="iPhone Image">
             </div>
-        </div>
 
-        
+            <div class="iphone-image3">
+                <img src="mobile.png" alt="iPhone Image">
+            </div>
+
+        </div>
+    </div>
+
+
 
 
 </body>
+
 </html>
+
+<div id="menu">
+    <button id="addPostButton">Adicionar Postagem</button>
+    <input type="text" id="searchInput" placeholder="Buscar postagens">
+</div>
+<div id="postsContainer"></div>
+
+<div id="addPostModal" style="display: none;">
+    <br>
+    <h2 class="title_post">Incluir Postagem</h2>
+    <br>
+    <div id="box_text">
+        <label for="postTitle">Título:</label>
+        <input type="text" id="postTitle">
+        <label for="postImage">Imagem:</label>
+        <input type="text" id="postImage">
+        <label for="postDate">Data:</label>
+        <input type="text" id="postDate">
+        <label for="postContent">Conteúdo:</label>
+        <textarea id="postContent"></textarea>
+        <button id="savePostButton">Salvar</button>
+    </div>
+    <br>
+    <br>
+</div>
+
+<div id="editPostModal" style="display: none;">
+    <br>
+    <h2 class="title_post">Editar Postagem</h2>
+    <br>
+    <div id="box_text">
+
+        <label for="editPostTitle">Título:</label>
+        <input type="text" id="editPostTitle">
+        <label for="editPostImage">Imagem:</label>
+        <input type="text" id="editPostImage">
+        <label for="editPostDate">Data:</label>
+        <input type="text" id="editPostDate">
+        <label for="editPostContent">Conteúdo:</label>
+        <textarea id="editPostContent"></textarea>
+        <button id="updatePostButton">Atualizar</button>
+    </div>
+    <br>
+    <br>
+</div>
+
+<script>
+    // Variáveis globais
+    var posts = [];
+
+    // Função para adicionar uma nova postagem
+    function addPost(title, image, date, content) {
+        var post = {
+            title: title,
+            image: image,
+            date: date,
+            content: content
+        };
+        posts.push(post);
+        renderPosts();
+    }
+
+    // Função para renderizar as postagens no layout principal
+    function renderPosts() {
+        var container = document.getElementById("postsContainer");
+        container.innerHTML = "";
+        for (var i = 0; i < posts.length; i++) {
+            var post = posts[i];
+
+            var postElement = document.createElement("div");
+            postElement.classList.add("post");
+
+            postElement.innerHTML = "<h3>" + post.title + "</h3>" +
+                "<img src='" + post.image + "'>" +
+                "<p>" + post.date + "</p>" +
+                "<p>" + post.content + "</p>";
+
+            var deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "Excluir";
+            deleteButton.id = "deleteButton-" + i;
+            deleteButton.addEventListener("click", (function (index) {
+                return function () {
+                    deletePost(index);
+                }
+            })(i));
+
+            var editButton = document.createElement("button");
+            editButton.innerHTML = "Editar";
+            editButton.id = "editButton-" + i;
+            editButton.addEventListener("click", (function (index) {
+                return function () {
+                    openEditModal(index);
+                }
+            })(i));
+
+            postElement.appendChild(deleteButton);
+            postElement.appendChild(editButton);
+
+            container.appendChild(postElement);
+        }
+    }
+
+    // Função para buscar postagens por título ou conteúdo
+    function searchPosts(query) {
+        var filteredPosts = posts.filter(function (post) {
+            return post.title.includes(query) || post.content.includes(query);
+        });
+        renderSearchResults(filteredPosts);
+    }
+
+    // Função para renderizar os resultados da busca
+    function renderSearchResults(results) {
+        var container = document.getElementById("postsContainer");
+        container.innerHTML = "";
+        for (var i = 0; i < results.length; i++) {
+            var post = results[i];
+
+            var postElement = document.createElement("div");
+            postElement.innerHTML = "<h3>" + post.title + "</h3>" +
+                "<img src='" + post.image + "'>" +
+                "<p>" + post.date + "</p>" +
+                "<p>" + post.content + "</p>";
+
+            var deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "Excluir";
+            deleteButton.addEventListener("click", (function (index) {
+                return function () {
+                    deletePost(index);
+                }
+            })(posts.indexOf(post)));
+
+            var editButton = document.createElement("button");
+            editButton.innerHTML = "Editar";
+            editButton.addEventListener("click", (function (index) {
+                return function () {
+                    openEditModal(index);
+                }
+            })(posts.indexOf(post)));
+
+            postElement.appendChild(deleteButton);
+            postElement.appendChild(editButton);
+
+            container.appendChild(postElement);
+        }
+    }
+
+    // Função para remover uma postagem
+    function deletePost(index) {
+        posts.splice(index, 1);
+        renderPosts();
+    }
+
+    // Função para abrir o modal de edição de postagem
+    function openEditModal(index) {
+        var post = posts[index];
+        document.getElementById("editPostTitle").value = post.title;
+        document.getElementById("editPostImage").value = post.image;
+        document.getElementById("editPostDate").value = post.date;
+        document.getElementById("editPostContent").value = post.content;
+        document.getElementById("editPostModal").style.display = "block";
+        document.getElementById("updatePostButton").addEventListener("click", function () {
+            updatePost(index);
+        });
+    }
+
+    // Função para atualizar uma postagem
+    function updatePost(index) {
+        var post = posts[index];
+        post.title = document.getElementById("editPostTitle").value;
+        post.image = document.getElementById("editPostImage").value;
+        post.date = document.getElementById("editPostDate").value;
+        post.content = document.getElementById("editPostContent").value;
+        document.getElementById("editPostModal").style.display = "none";
+        renderPosts();
+    }
+
+    // Evento de clique para abrir o modal de inclusão de postagem
+    document.getElementById("addPostButton").addEventListener("click", function () {
+        document.getElementById("addPostModal").style.display = "block";
+    });
+
+    // Evento de clique para salvar uma nova postagem
+    document.getElementById("savePostButton").addEventListener("click", function () {
+        var title = document.getElementById("postTitle").value;
+        var image = document.getElementById("postImage").value;
+        var date = document.getElementById("postDate").value;
+        var content = document.getElementById("postContent").value;
+        addPost(title, image, date, content);
+        document.getElementById("addPostModal").style.display = "none";
+    });
+
+    // Evento de digitação para buscar postagens em tempo real
+    document.getElementById("searchInput").addEventListener("input", function () {
+        var query = document.getElementById("searchInput").value;
+        searchPosts(query);
+    });
+
+</script>
