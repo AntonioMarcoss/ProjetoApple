@@ -77,6 +77,8 @@
 
 </body>
 
+<input type="file" id="imageFileInput">
+<button onclick="uploadImage()">Enviar</button>
 
 <div id="menu">
     <button id="addPostButton">Adicionar Postagem</button>
@@ -98,6 +100,7 @@
         <label for="postContent">Conteúdo:</label>
         <textarea id="postContent"></textarea>
         <button id="savePostButton">Salvar</button>
+        <button id="CanPostButton">Cancelar</button>
     </div>
     <br>
     <br>
@@ -127,8 +130,30 @@
     // Variáveis globais
     var posts = [];
 
+    // Carregar dados do armazenamento local, se existirem
+    if (localStorage.getItem("posts")) {
+        posts = JSON.parse(localStorage.getItem("posts"));
+    }
+
     // Função para adicionar uma nova postagem
+    class adicionar {
+        constructor(title, image, date, content){
+        this.title = title;
+        this.image = image;
+        this.date = date;
+        this.content = content;
+        }
+    }
+
     function addPost(title, image, date, content) {
+        adicionar.prototype.title=function(){
+        }
+        adicionar.prototype.image=function(){
+        }
+        adicionar.prototype.date=function(){
+        }
+        adicionar.prototype.content=function(){
+        }
         var post = {
             title: title,
             image: image,
@@ -136,8 +161,9 @@
             content: content
         };
         posts.push(post);
+        savePostsToLocalStorage();
         renderPosts();
-    }
+     }  
 
     // Função para renderizar as postagens no layout principal
     function renderPosts() {
@@ -180,10 +206,17 @@
     }
 
     // Função para buscar postagens por título ou conteúdo
+    class busca {
+        constructor(title){
+        this.title = title;
+        }
+    }
     function searchPosts(query) {
+        busca.prototype.title=function(){
         var filteredPosts = posts.filter(function (post) {
             return post.title.includes(query) || post.content.includes(query);
         });
+    }
         renderSearchResults(filteredPosts);
     }
 
@@ -226,16 +259,34 @@
     // Função para remover uma postagem
     function deletePost(index) {
         posts.splice(index, 1);
+        savePostsToLocalStorage();
         renderPosts();
     }
 
     // Função para abrir o modal de edição de postagem
+    class edicao {
+        constructor(title, image, date, content){
+        this.title = title;
+        this.image = image;
+        this.date = date;
+        this.content = content;
+        }
+    }
+    
     function openEditModal(index) {
         var post = posts[index];
-        document.getElementById("editPostTitle").value = post.title;
+        edicao.prototype.title=function(){
+            document.getElementById("editPostTitle").value = post.title;
+        }
+        edicao.prototype.image= function(){ 
         document.getElementById("editPostImage").value = post.image;
+        }
+        edicao.prototype.date= function(){
         document.getElementById("editPostDate").value = post.date;
+        }
+        edicao.prototype.content= function(){
         document.getElementById("editPostContent").value = post.content;
+        }
         document.getElementById("editPostModal").style.display = "block";
         document.getElementById("updatePostButton").addEventListener("click", function () {
             updatePost(index);
@@ -250,6 +301,7 @@
         post.date = document.getElementById("editPostDate").value;
         post.content = document.getElementById("editPostContent").value;
         document.getElementById("editPostModal").style.display = "none";
+        savePostsToLocalStorage();
         renderPosts();
     }
 
@@ -273,6 +325,25 @@
         var query = document.getElementById("searchInput").value;
         searchPosts(query);
     });
+
+    // Função para salvar os dados das postagens no armazenamento local
+    function savePostsToLocalStorage() {
+        localStorage.setItem("posts", JSON.stringify(posts));
+    }
+
+    function uploadImage() {
+    var fileInput = document.getElementById('imageFileInput');
+    var file = fileInput.files[0];
+
+    if (file) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var imageSrc = e.target.result;
+        console.log('Imagem carregada:', imageSrc);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 
 </script>
 
